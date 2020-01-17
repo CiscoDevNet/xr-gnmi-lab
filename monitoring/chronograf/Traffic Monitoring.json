@@ -1,0 +1,141 @@
+{
+	"meta": {
+		"chronografVersion": "1.6.2",
+		"sources": {
+			"0": {
+				"name": "http://influxdb:8086",
+				"link": "/chronograf/v1/sources/0"
+			}
+		}
+	},
+	"dashboard": {
+		"id": 1,
+		"cells": [
+			{
+				"i": "acf183d3-ce96-4211-8c81-6992a39ffb77",
+				"x": 0,
+				"y": 0,
+				"w": 12,
+				"h": 4,
+				"name": "GigabitEthernet0/0/0/0 - Input and output rates",
+				"queries": [
+					{
+						"query": "SELECT non_negative_derivative(\"bytes_received\", 1s) *8 / 1000 AS \"input rate\"  FROM \"telemetry\".\"autogen\".\"Cisco-IOS-XR-infra-statsd-oper:infra-statistics/interfaces/interface/generic-counters\" WHERE time > :dashboardTime: AND \"interface-name\"='GigabitEthernet0/0/0/0' GROUP BY \"interface-name\" FILL(null); SELECT non_negative_derivative(\"bytes_sent\", 1s) *8 / 1000 AS \"output rate\"  FROM \"telemetry\".\"autogen\".\"Cisco-IOS-XR-infra-statsd-oper:infra-statistics/interfaces/interface/generic-counters\" WHERE time > :dashboardTime: AND \"interface-name\"='GigabitEthernet0/0/0/0' GROUP BY \"interface-name\" FILL(null)",
+						"queryConfig": {
+							"database": "",
+							"measurement": "",
+							"retentionPolicy": "",
+							"fields": [],
+							"tags": {},
+							"groupBy": {
+								"time": "",
+								"tags": []
+							},
+							"areTagsAccepted": false,
+							"rawText": "SELECT non_negative_derivative(\"bytes_received\", 1s) *8 / 1000 AS \"input rate\"  FROM \"telemetry\".\"autogen\".\"Cisco-IOS-XR-infra-statsd-oper:infra-statistics/interfaces/interface/generic-counters\" WHERE time > :dashboardTime: AND \"interface-name\"='GigabitEthernet0/0/0/0' GROUP BY \"interface-name\" FILL(null); SELECT non_negative_derivative(\"bytes_sent\", 1s) *8 / 1000 AS \"output rate\"  FROM \"telemetry\".\"autogen\".\"Cisco-IOS-XR-infra-statsd-oper:infra-statistics/interfaces/interface/generic-counters\" WHERE time > :dashboardTime: AND \"interface-name\"='GigabitEthernet0/0/0/0' GROUP BY \"interface-name\" FILL(null)",
+							"range": null,
+							"shifts": null
+						},
+						"source": "/chronograf/v1/sources/0"
+					}
+				],
+				"axes": {
+					"x": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "rate [Kbits/sec]",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y2": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					}
+				},
+				"type": "line",
+				"colors": [
+					{
+						"id": "f96d4be2-1a80-4d96-82dd-27219869ba22",
+						"type": "scale",
+						"hex": "#FDC44F",
+						"name": "Cthulhu",
+						"value": "0"
+					},
+					{
+						"id": "9c835bd6-af0f-4a8c-a843-d88aaf79032a",
+						"type": "scale",
+						"hex": "#007C76",
+						"name": "Cthulhu",
+						"value": "0"
+					},
+					{
+						"id": "da8b1b04-e658-4c8a-8b8f-069c7e41ab59",
+						"type": "scale",
+						"hex": "#8983FF",
+						"name": "Cthulhu",
+						"value": "0"
+					}
+				],
+				"legend": {
+					"type": "static",
+					"orientation": "bottom"
+				},
+				"tableOptions": {
+					"verticalTimeAxis": true,
+					"sortBy": {
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					"wrapping": "truncate",
+					"fixFirstColumn": true
+				},
+				"fieldOptions": [
+					{
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					}
+				],
+				"timeFormat": "MM/DD/YYYY HH:mm:ss",
+				"decimalPlaces": {
+					"isEnforced": true,
+					"digits": 2
+				},
+				"links": {
+					"self": "/chronograf/v1/dashboards/1/cells/acf183d3-ce96-4211-8c81-6992a39ffb77"
+				}
+			}
+		],
+		"templates": [],
+		"name": "Traffic Monitoring",
+		"organization": "default",
+		"links": {
+			"self": "/chronograf/v1/dashboards/1",
+			"cells": "/chronograf/v1/dashboards/1/cells",
+			"templates": "/chronograf/v1/dashboards/1/templates"
+		}
+	}
+}
